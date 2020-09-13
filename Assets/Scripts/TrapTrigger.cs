@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlateMove : MonoBehaviour
+public class TrapTrigger : MonoBehaviour
 {
     public float fallSpeed;
-    public Transform fallPlateTrans;
-    private Rigidbody2D rigidbody2D;
-    //private Vector3 move;
+    public Transform trap;
     private PlateFall plateFall;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        //move = new Vector2(0, speedY);
-        plateFall = fallPlateTrans.GetComponent<PlateFall>();
+        plateFall = trap.GetComponent<PlateFall>();
     }
 
     // Update is called once per frame
@@ -25,18 +21,8 @@ public class PlateMove : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        //Debug.Log("速度"+speedY);
-        //Vector3 dest = transform.position + move * Time.deltaTime;
-        //rigidbody2D.MovePosition(dest);
-        //if (dest.y < maxY && dest.y > minY) {
-        //    rigidbody2D.MovePosition(transform.position + move * Time.deltaTime);
-        //}
-        //else {
-         //   Debug.Log("到达限制区域");
-        //}
        
     }
-
 
     private void OnTriggerExit2D(Collider2D collision) {
         //Debug.Log("玩家离开了机关");
