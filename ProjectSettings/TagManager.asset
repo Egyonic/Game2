@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - CameraShake
   - Statute
+  - Statue
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Character
   - InvisibleCollider
   - Item
-  - 
+  - PlayerTrigger
   - 
   - 
   - 

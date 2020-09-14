@@ -11,19 +11,21 @@ public class PlayerController : MonoBehaviour
     public float restoreTime;
     public float floatSpeed;    //漂浮速度
     public float floatingGravity;  //飘浮时的重力
+    public float moveSpeed; //移动雕像时的速度
     public Vector3 EffectOffset;    //回血特效的位置偏移
+    public bool isMovingStatue;   //是否处于移动雕像的状态
 
     public GameObject AddBloodEffect;   //回血特效
     public int itemAmount;  //道具总数
     public Item[] items; //人物的道具，在Inspector的人物的该脚本组件中编辑
 
-    //控制中间房间的移动的控制器
-    //public  bool[] CenterRoomTrigger;
     private PlayerHealth playerHealth;  //控制玩家血量的组件
     private Rigidbody2D myRigidbody;
     private Animator myAnim;    //人物动画
     private BoxCollider2D myFeet;   //人物脚部的触发器
     private bool isGround;  //是否接触地面
+
+    public bool canMoveStatue; //是否可以移动雕像
     private bool canDoubleJump; //二段跳的判断
 
     private int currentItemId;    //当前使用的引力石道具的ID
@@ -45,8 +47,9 @@ public class PlayerController : MonoBehaviour
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>(); //获得血量控制器
         playerGravity = myRigidbody.gravityScale;
         isFloating = false;
-        //CenterRoomTrigger = new bool[3];
-        //EffectOffset = new Vector3(0, 0.5, 0);
+        isMovingStatue = false;
+        canMoveStatue = false;
+
 
         //道具相关的设置
         ItemUI.currentItem = items[0];
@@ -63,21 +66,19 @@ public class PlayerController : MonoBehaviour
         {
             //CheckAirStatus();
             Flip(); //实现左右翻转
-            if (!isFloating) {
+            if (!isFloating && !isMovingStatue) {
                 Run();  //正常移动
                 Jump();
             }
-            else {
-                Floating(); //悬浮移动
-            }
-
-            //Attack();
+            
             SwitchItem();
-            Floating();
+            Floating(); //监听是否进入漂浮状态
+            MoveStatue();  //移动雕像
             UseStoneItem(); //监听道具使用
             SwitchItemStatus();//切换道具状态
 
             CheckFloating();    //玩家是否对自己使用了重力，处于悬浮状态
+            CheckMoveStatue(); //监听玩家是否按了进入控制雕像的按钮
             CheckGrounded();   // 检查是否与地面接触
             
             //SwitchAnimation();
@@ -208,6 +209,27 @@ public class PlayerController : MonoBehaviour
        
     }
 
+    //监听按键来设置状态
+    void CheckMoveStatue() {
+        if (Input.GetButtonDown("MoveStatute") && canMoveStatue) {
+            isMovingStatue = !isMovingStatue;
+            Debug.Log("可移动雕像: "+isMovingStatue);
+        }
+    }
+
+    public void CanMoveStatue(bool flag) {
+        canMoveStatue = flag;
+    }
+
+    void MoveStatue() {
+        if (isMovingStatue) {
+            //Debug.Log("移动雕像中");
+            float moveX = Input.GetAxis("Horizontal");
+            Vector2 playerVel = new Vector2(moveX * moveSpeed, 0.0f);
+            myRigidbody.velocity = playerVel;
+        }
+    }
+
     void Jump()
     {
         //Debug.Log(isGround);
@@ -246,7 +268,6 @@ public class PlayerController : MonoBehaviour
     void SwitchAnimation()
     {
         //myAnim.SetBool("Idle", false);
-
 
         if(myRigidbody.velocity.x < 0.01f) {
             myAnim.SetBool("Idle", true);
