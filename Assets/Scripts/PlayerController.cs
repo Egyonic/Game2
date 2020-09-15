@@ -100,12 +100,12 @@ public class PlayerController : MonoBehaviour
         {
             if(myRigidbody.velocity.x > 0.1f)
             {
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
 
             if (myRigidbody.velocity.x < -0.1f)
             {
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
         }
     }
