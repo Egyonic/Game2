@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool isGround;  //是否接触地面
 
     public bool canMoveStatue; //是否可以移动雕像
+    private bool haveDeviceItem; //是否持有场景中可以移动石头方块的道具
     private bool canDoubleJump; //二段跳的判断
 
     private int currentItemId;    //当前使用的引力石道具的ID
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private bool isFloating;    //玩家是否在悬浮
 
     private float playerGravity;    //记录玩家的初始重力值
+
+    public bool HaveDeviceItem { get => haveDeviceItem; set => haveDeviceItem = value; }
 
     // Start is called before the first frame update
     void Start()

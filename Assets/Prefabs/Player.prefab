@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b555aa8583bf3424ebc91947dd8100e9, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 2075931785
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 38070a732ff6d7e4aabbc0ecbfd69af4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb5da067ee8c7f84e8fc557acc1ad73a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,8 +148,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.022171259, y: 0.00246346}
-  m_Size: {x: 0.6600485, y: 0.9950781}
+  m_Offset: {x: -0.013090134, y: 0.0046525}
+  m_Size: {x: 0.7564926, y: 0.936183}
   m_Direction: 0
 --- !u!114 &7865567746157479272
 MonoBehaviour:
@@ -187,7 +187,9 @@ MonoBehaviour:
   restoreTime: 2
   floatSpeed: 5
   floatingGravity: 0
+  moveSpeed: 2
   EffectOffset: {x: 0, y: 0.5, z: 0}
+  isMovingStatue: 0
   AddBloodEffect: {fileID: 2017448586585008368, guid: fa8b16c0dbecf5347a5885856b87797a,
     type: 3}
   itemAmount: 3
@@ -210,6 +212,7 @@ MonoBehaviour:
     status: 0
     isUsing: 0
     sprite: {fileID: 21300000, guid: 1b90c6629a8b3c4498ccb360d67f1ce6, type: 3}
+  canMoveStatue: 0
 --- !u!95 &7865567746157479275
 Animator:
   serializedVersion: 3
@@ -220,7 +223,7 @@ Animator:
   m_GameObject: {fileID: 7865567746157479267}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d458fa1f7d2351d4a9e121919e220029, type: 2}
+  m_Controller: {fileID: 9100000, guid: c710ca792ed301b44be70ff6cde0c336, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -238,6 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7865567747267444086}
+  - component: {fileID: 2813371614246199930}
   m_Layer: 10
   m_Name: PlayerAttack
   m_TagString: Untagged
@@ -259,3 +263,29 @@ Transform:
   m_Father: {fileID: 7865567746157479269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2813371614246199930
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865567747267444087}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.37313747, y: -0.12702584}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25372505, y: 0.2060895}
+  m_EdgeRadius: 0
