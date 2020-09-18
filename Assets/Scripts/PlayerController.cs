@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private Animator myAnim;    //人物动画
     private BoxCollider2D myFeet;   //人物脚部的触发器
     private bool isGround;  //是否接触地面
+    private bool isJumping; //是否跳跃在空中
 
     public bool canMoveStatue; //是否可以移动雕像
     private bool haveDeviceItem; //是否持有场景中可以移动石头方块的道具
@@ -53,11 +54,11 @@ public class PlayerController : MonoBehaviour
         isMovingStatue = false;
         canMoveStatue = false;
 
-
         //道具相关的设置
         ItemUI.currentItem = items[0];
         GravityAreaController.currentItem = items[0];
         TranslateTrigger.spaceStone = items[1]; //设置传送装置类对空间石的引用
+        AutoMove.gravityStone = items[0];
         currentItemId = 0;//设置第0个道具为当前道具
 
     }
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
             CheckMoveStatue(); //监听玩家是否按了进入控制雕像的按钮
             CheckGrounded();   // 检查是否与地面接触
             
-            //SwitchAnimation();
+            SwitchAnimation();
         }
     }
 
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
         Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVel;
         bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        //bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > 0;
         if (plyerHasXAxisSpeed) {
             myAnim.SetBool("Walk", plyerHasXAxisSpeed);
             myAnim.SetBool("Idle", !plyerHasXAxisSpeed);
@@ -240,7 +242,8 @@ public class PlayerController : MonoBehaviour
         {
             if(isGround)
             {
-                //myAnim.SetBool("Jump", true);
+                myAnim.SetBool("Jump", true);
+                isJumping = true;
                 Vector2 jumpVel = new Vector2(0.0f, jumpSpeed);
                 myRigidbody.velocity = Vector2.up * jumpVel;
                 canDoubleJump = true;
@@ -272,9 +275,14 @@ public class PlayerController : MonoBehaviour
     {
         //myAnim.SetBool("Idle", false);
 
-        if(myRigidbody.velocity.x < 0.01f) {
-            myAnim.SetBool("Idle", true);
-            myAnim.SetBool("Walk", false);
+        //if(Mathf.Abs(myRigidbody.velocity.x) < 0.01f) {
+        //    myAnim.SetBool("Idle", true);
+        //    myAnim.SetBool("Walk", false);
+        //}
+        
+        if(isGround && myRigidbody.velocity.y < 0.01f) {
+            myAnim.SetBool("Jump", false);
+            isJumping = false;
         }
     }
 

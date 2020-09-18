@@ -19,9 +19,9 @@ public class StatueTrigger : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Player")) {
-            Debug.Log("进入范围");
-        }
+        //if (collision.gameObject.CompareTag("Player")) {
+            //Debug.Log("进入范围");
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
@@ -36,7 +36,7 @@ public class StatueTrigger : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             playerEnter = false;
             player.CanMoveStatue(false);
-            Debug.Log("退出范围");
+            //Debug.Log("退出范围");
         }
     }
 }

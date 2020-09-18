@@ -72,11 +72,11 @@ GameObject:
   - component: {fileID: 45307931079953016}
   - component: {fileID: 9004182322414303423}
   - component: {fileID: 3707393708949610846}
-  - component: {fileID: 1430084943}
   - component: {fileID: 1834466067}
+  - component: {fileID: 1430084943}
   m_Layer: 0
   m_Name: DoorStatue2-1-2
-  m_TagString: Statute
+  m_TagString: Statue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,23 +168,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1430084943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2550116562739605797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657396f963f7d9b4a9fe8136303a9d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StatueId: 1
-  head: {fileID: 2200579251126229637}
-  trigger: {fileID: 196200981}
-  headMoveY: 0.22
-  moveSpeed: 2
 --- !u!61 &1834466067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,6 +194,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6575203, y: 0.22425139}
   m_EdgeRadius: 0
+--- !u!114 &1430084943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550116562739605797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657396f963f7d9b4a9fe8136303a9d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatueId: 1
+  head: {fileID: 2200579251126229637}
+  trigger: {fileID: 196200981}
+  headMoveY: 0.22
+  moveSpeed: 2
 --- !u!1 &3730760608453823371
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 8794595613452746203}
   m_Layer: 0
   m_Name: DoorStatue2-1-5
-  m_TagString: Statute
+  m_TagString: Statue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14780998, y: 0.16835427}
+  m_Offset: {x: 0.14780998, y: 0.17407423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -317,5 +317,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50167084, y: 0.28058815}
+  m_Size: {x: 0.50167084, y: 0.29202807}
   m_EdgeRadius: 0

@@ -19,6 +19,7 @@ public class GravityAreaController : MonoBehaviour
     public static Vector2 downDir = new Vector2(0, -1);
     public static Vector2 leftDir = new Vector2(-1, 0);
     public static Vector2 rightDir = new Vector2(1, 0);
+    public static Vector2 noDir = new Vector2(0,0);
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,12 @@ public class GravityAreaController : MonoBehaviour
         direction = dir;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            Debug.Log("玩家进入有效范围");
+        }
+    }
+
     // 玩家进入了有效的可以使用重力石来操作的区域
     private void OnTriggerStay2D(Collider2D other) {
         // 判断进入触发区的是否是玩家
@@ -54,9 +61,11 @@ public class GravityAreaController : MonoBehaviour
             if (currentItem.name == "重力石" && currentItem.status == false
                 && currentItem.isUsing) {
                 if (Input.GetButtonDown("stoneDirectionUp")) {
+                    Debug.Log("stoneDirectionUp");
                     direction = upDir;
                 }
                 else if (Input.GetButtonDown("stoneDirectionDown")) {
+                    Debug.Log("stoneDirectionDown");
                     direction = downDir;
                 }
                 else if (Input.GetButtonDown("stoneDirectionLeft")) {
@@ -65,6 +74,11 @@ public class GravityAreaController : MonoBehaviour
                 else if (Input.GetButtonDown("stoneDirectionRight")) {
                     direction = rightDir;
                 }
+            }else
+            {
+                //if (!(currentItem.name == "重力石") || !currentItem.isUsing || currentItem.status == true
+                //没有在使用
+                direction = noDir;
             }
         }
 

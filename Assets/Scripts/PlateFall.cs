@@ -30,7 +30,6 @@ public class PlateFall : MonoBehaviour
     //杀死玩家或怪物
     private void OnCollisionEnter2D(Collision2D collision) {
         //玩家
-       
         if (collision.gameObject.CompareTag("Player") && collision.GetType().ToString() == "UnityEngine.CapsuleCollider2D") {
             Debug.Log("掉落撞到玩家");
             playerHealth.DamegePlayer(100);
