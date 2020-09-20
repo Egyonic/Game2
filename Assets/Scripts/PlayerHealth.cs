@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
             rb2d.velocity = new Vector2(0, 0);
             //rb2d.gravityScale = 0.0f;
             GameController.isGameAlive = false;
-            //anim.SetTrigger("Die");   播放死亡动画
+            anim.SetTrigger("Die");   //播放死亡动画
             Invoke("KillPlayer", dieTime);
         }
         //BlinkPlayer(blinks, time);

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2017448586585008370}
   - component: {fileID: 2017448586585008371}
   m_Layer: 10
-  m_Name: AddBloodEffect 1
+  m_Name: AddBloodEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ ParticleSystem:
   m_GameObject: {fileID: 2017448586585008368}
   serializedVersion: 6
   lengthInSec: 1
-  simulationSpeed: 3
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -607,7 +607,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.3
+      scalar: -0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4738,9 +4738,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1367714679
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 2075931785
+  m_SortingLayer: 3
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4776,4 +4776,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433f935d5d62b18459ad94ef9985f21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 0.5
+  timeToDestroy: 1

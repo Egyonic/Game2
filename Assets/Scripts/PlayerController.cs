@@ -146,6 +146,8 @@ public class PlayerController : MonoBehaviour
 
             //回复药水的处理，要检查数量是否不为0
             if (item.name=="回复药水" && item.count>0) {
+                myAnim.SetTrigger("Heal");  //播放动画
+
                 playerHealth.HealPlayer();  //回复玩家血量
                 item.count--;
                 // 播放回血特效

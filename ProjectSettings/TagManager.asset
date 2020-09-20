@@ -24,8 +24,8 @@ TagManager:
   - InvisibleCollider
   - Item
   - PlayerTrigger
-  - 
-  - 
+  - Weapon
+  - Enemy
   - 
   - 
   - 
