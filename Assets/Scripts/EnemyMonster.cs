@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyMonster : Enemy
 {
     public float speed;
-    public float startWaitTime;
+    public float startWaitTime; //动作间的间隔时间
     private float waitTime;
 
     public Transform movePos;
-    public Transform leftDownPos;
+    public Transform leftDownPos;   //左右移动范围
     public Transform rightUpPos;
 
     private bool Walk;
@@ -30,12 +30,7 @@ public class EnemyMonster : Enemy
         //调用父类的Update()方法
         base.Update();
         getAnimState(); //获取动画状态值
-        //Debug.Log("Walk"+myAnim.GetBool("Walk"));
-        //Debug.Log("Idle" + myAnim.GetBool("Idle"));
-
         transform.position = Vector2.MoveTowards(transform.position, movePos.position, speed * Time.deltaTime);
-        //myAnim.SetBool("IsWalk", true); //开始播放行走动画
-
         // 已经移动到了指定位置
         if (Vector2.Distance(transform.position, movePos.position) < 0.01f) {
             myAnim.SetBool("Walk", false);

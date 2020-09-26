@@ -9,7 +9,6 @@ public class AxeHit : MonoBehaviour
     public float startTime; //延迟的时间，配合动画
 
     private Animator anim;
-    // Start is called before the first frame update
     void Start()
     {
         anim = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
@@ -23,7 +22,6 @@ public class AxeHit : MonoBehaviour
             StartCoroutine(onceAttack());
         }
     }
-
     IEnumerator onceAttack() {
         yield return new WaitForSeconds(startTime);
         Instantiate(axe, transform.position, transform.rotation);

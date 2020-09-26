@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Axe : MonoBehaviour
 {
-    public float speed;
-    public float rotateSpeed;
-    public int damage;
-    public float tuning;
+    public float speed; //变化速度
+    public float rotateSpeed;   //旋转速度
+    public int damage;  //造成伤害数
+    public float tuning;    //平滑
 
     private Rigidbody2D rb2d;
     private Transform playerTransform;
     private Transform axeTransform;
-    private Vector2 startSpeed;
+    private Vector2 startSpeed;//初始速度
     private AxeHit axeHit;
 
     //private CameraShake camShake;

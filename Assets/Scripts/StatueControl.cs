@@ -31,14 +31,11 @@ public class StatueControl : MonoBehaviour
     {
         //玩家进入范围内的时候开启可以控制
         if (statueTrigger.playerEnter) {
-            //Debug.Log("玩家进入");
-            //player.CanMoveStatue(true); //设置玩家可以操控雕像
-
+            //player.CanMoveStatue(true); //设置玩家可以操控雕
             //监听玩家是否进入控制雕像的状态
             if (Input.GetButtonDown("MoveStatuteHead")) {
                 changeHead();
             }
-
             if (player.isMovingStatue) {
                 moveByPlayer();
             }

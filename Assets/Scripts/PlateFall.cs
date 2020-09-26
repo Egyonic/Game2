@@ -34,7 +34,7 @@ public class PlateFall : MonoBehaviour
             Debug.Log("掉落撞到玩家");
             playerHealth.DamegePlayer(100);
         }else if (collision.gameObject.CompareTag("Enemy")) {
-            EnemyMonster enemy = (EnemyMonster)collision.gameObject.GetComponentInParent<EnemyMonster>();
+            EnemyMonster enemy = collision.gameObject.GetComponentInParent<EnemyMonster>();
             enemy.TakeDamage(50);
         }
     }
@@ -43,6 +43,10 @@ public class PlateFall : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && collision.GetType().ToString() == "UnityEngine.CapsuleCollider2D") {
             Debug.Log("Trigger掉落撞到玩家");
             playerHealth.DamegePlayer(100);
+        }
+        else if (collision.gameObject.CompareTag("Enemy")) {
+            EnemyMonster enemy = collision.gameObject.GetComponentInParent<EnemyMonster>();
+            enemy.TakeDamage(50);
         }
     }
 }

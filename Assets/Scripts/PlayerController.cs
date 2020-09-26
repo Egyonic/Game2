@@ -117,11 +117,9 @@ public class PlayerController : MonoBehaviour
     void Run()
     {
         float moveDir = Input.GetAxis("Horizontal");
-        //Debug.Log("moveDir = " + moveDir.ToString());
         Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVel;
         bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        //bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > 0;
         if (plyerHasXAxisSpeed) {
             myAnim.SetBool("Walk", plyerHasXAxisSpeed);
             myAnim.SetBool("Idle", !plyerHasXAxisSpeed);
@@ -239,7 +237,6 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        //Debug.Log(isGround);
         if (Input.GetButtonDown("Jump"))
         {
             if(isGround)
@@ -275,13 +272,6 @@ public class PlayerController : MonoBehaviour
     //实现动画之间的切换
     void SwitchAnimation()
     {
-        //myAnim.SetBool("Idle", false);
-
-        //if(Mathf.Abs(myRigidbody.velocity.x) < 0.01f) {
-        //    myAnim.SetBool("Idle", true);
-        //    myAnim.SetBool("Walk", false);
-        //}
-        
         if(isGround && myRigidbody.velocity.y < 0.01f) {
             myAnim.SetBool("Jump", false);
             isJumping = false;

@@ -7,17 +7,21 @@ public abstract class Enemy : MonoBehaviour
 {
     public int health;
     public int damage;
-    public int damageByRock;
+    public float timeToDie; //死亡延迟
+    //public int damageByRock;
+    public GameObject AttackedEffect;   //被击打特效
+    public Vector3 EffectOffset;    //特效的位置偏移
 
     public Animator myAnim;    //动画组件
 
     private PlayerHealth playerHealth;
+    private Vector3 noRotation = new Vector3(0,0,0);
 
     // Start is called before the first frame update
     public void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        myAnim = GetComponentInChildren<Animator>();
+        myAnim = GetComponent<Animator>();
 
     }
 
@@ -25,17 +29,21 @@ public abstract class Enemy : MonoBehaviour
     public void Update()
     {
         if (health <= 0)
-        {  
-            Destroy(gameObject);
+        {
+            myAnim.SetTrigger("Die");
+            Invoke("killEnemy", timeToDie);
         }
     }
 
     public void TakeDamage(int damage)
     {
-       
         health -= damage;
-
+        Instantiate(AttackedEffect, transform.position + EffectOffset, Quaternion.identity);
         //GameController.camShake.Shake();
+    }
+
+    void killEnemy() {
+        Destroy(gameObject);
     }
 
 
@@ -43,6 +51,10 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
+            //播放怪物攻击动画
+            myAnim.SetTrigger("Attack");    //触发怪物攻击动画
+            SoundManager.PlayHitByEnemy();  //播放声音
+
             //翻转效果
             if (other.gameObject.transform.position.x < transform.position.x) {
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -56,15 +68,11 @@ public abstract class Enemy : MonoBehaviour
             {
                 playerHealth.DamegePlayer(damage);
             }
-            //播放怪物攻击动画
-            myAnim.SetTrigger("Attack");    //触发怪物攻击动画
-            SoundManager.PlayHitByEnemy();  //播放声音
+            
 
         } 
         //怪物撞击到石头会扣血
-        else if (other.gameObject.CompareTag("RockBlock")) {
-            TakeDamage(damageByRock);
-        }
+        
     }
 
     public static explicit operator Enemy(GameObject v) {
