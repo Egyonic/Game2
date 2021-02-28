@@ -131,6 +131,8 @@ MonoBehaviour:
   timeToDie: 2
   AttackedEffect: {fileID: 2301648916877839023, guid: 63bf094a24e3e4c4bb52bdd5d45aa80e,
     type: 3}
+  floatPoint: {fileID: 1001103486233372441, guid: 2b3c5c2f28aaa984fa84efb90991ce1b,
+    type: 3}
   EffectOffset: {x: 0, y: 0, z: 0}
   myAnim: {fileID: 0}
   speed: 2

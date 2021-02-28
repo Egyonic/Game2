@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     public float timeToDie; //死亡延迟
     //public int damageByRock;
     public GameObject AttackedEffect;   //被击打特效
+    public GameObject floatPoint;
     public Vector3 EffectOffset;    //特效的位置偏移
 
     public Animator myAnim;    //动画组件
@@ -38,6 +39,8 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         Instantiate(AttackedEffect, transform.position + EffectOffset, Quaternion.identity);
         //GameController.camShake.Shake();
     }
